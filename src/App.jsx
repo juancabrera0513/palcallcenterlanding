@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import mentorImg from "./assets/pal-mentor.png";
-import ringImg from "./assets/pal-ring.png";
 import badgeImg from "./assets/pal-badge.png";
 
 const WHATSAPP_LINK = "https://wa.me/message/LMSJBMQJW4E2A1";
@@ -24,10 +23,9 @@ const slides = [
     bottom:
       "*LA ENTREVISTA SE GANA POR CÓMO LO DICES, NO SOLO POR QUÉ DICES.*",
     circleClass:
-      "text-[1rem] leading-[1.02] sm:text-[1.3rem] md:text-[1.55rem]",
-    bottomClass: "text-[0.72rem] leading-[1.06] sm:text-[0.9rem]",
-    ringSize: "h-[160px] w-[160px] sm:h-[210px] sm:w-[210px]",
-    wrap: "max-w-[340px] sm:max-w-[420px]",
+      "text-[1.28rem] leading-[0.95] sm:text-[1.7rem] md:text-[2rem]",
+    bottomClass: "text-[0.82rem] leading-[1.02] sm:text-[1rem]",
+    wrap: "max-w-[340px] sm:max-w-[440px]",
   },
   {
     id: 3,
@@ -40,10 +38,9 @@ const slides = [
     bottom:
       "UN FINAL FELIZ CON RESULTADOS ESPECÍFICOS VALE MÁS QUE MIL PALABRAS.",
     circleClass:
-      "text-[1rem] leading-[1.02] sm:text-[1.3rem] md:text-[1.55rem]",
-    bottomClass: "text-[0.72rem] leading-[1.06] sm:text-[0.9rem]",
-    ringSize: "h-[160px] w-[160px] sm:h-[210px] sm:w-[210px]",
-    wrap: "max-w-[340px] sm:max-w-[420px]",
+      "text-[1.08rem] leading-[0.98] sm:text-[1.42rem] md:text-[1.7rem]",
+    bottomClass: "text-[0.78rem] leading-[1.02] sm:text-[0.96rem]",
+    wrap: "max-w-[345px] sm:max-w-[440px]",
   },
   {
     id: 4,
@@ -55,10 +52,9 @@ const slides = [
       "¿SIN EXPERIENCIA?\n➜ Actitud, Logros\nPersonales y Carrera\nen la empresa.\n\n¿CON EXPERIENCIA?\n➜ Números y Soluciones\nCríticas en trabajo anterior.",
     bottom: "Sé la solución que cierra su meta hoy.",
     circleClass:
-      "text-[1rem] leading-[1.02] sm:text-[1.26rem] md:text-[1.5rem]",
-    bottomClass: "text-[0.82rem] leading-[1.05] sm:text-[1rem]",
-    ringSize: "h-[165px] w-[165px] sm:h-[220px] sm:w-[220px]",
-    wrap: "max-w-[340px] sm:max-w-[420px]",
+      "text-[1.12rem] leading-[0.98] sm:text-[1.5rem] md:text-[1.8rem]",
+    bottomClass: "text-[0.9rem] leading-[1.02] sm:text-[1.08rem]",
+    wrap: "max-w-[345px] sm:max-w-[440px]",
   },
   {
     id: 5,
@@ -72,8 +68,8 @@ const slides = [
       ["LÓGICA:", "Responde lo que ellos quieren oír."],
       ["COMUNIDAD:", "Practica diario a tu ritmo."],
     ],
-    cta: "¡QUIERO MI ENTRENAMIENTO!   $100",
-    footnote: "*Acceso inmediato. Sesiones hoy 7:00 PM.*",
+    cta: "¡SÍ! QUIERO ENTRAR AL RETO GRATIS",
+    footnote: "*(Grupo WhatsApp).*",
   },
 ];
 
@@ -89,9 +85,9 @@ function Arrow({ side, onClick }) {
       aria-label={side === "left" ? "Anterior" : "Siguiente"}
       className={cn(
         "absolute top-1/2 z-30 -translate-y-1/2 rounded-full",
-        "border border-white/15 bg-black/70 text-white",
+        "border border-lime-400/40 bg-black/70 text-white",
         "flex h-11 w-11 items-center justify-center sm:h-12 sm:w-12",
-        "transition hover:border-lime-400/60 hover:text-lime-300"
+        "transition hover:border-lime-400/80 hover:text-lime-300"
       )}
       style={side === "left" ? { left: "-4px" } : { right: "-4px" }}
     >
@@ -102,7 +98,7 @@ function Arrow({ side, onClick }) {
 
 function Dots({ total, active, onSelect }) {
   return (
-    <div className="mt-3 flex items-center justify-center gap-2 pb-3">
+    <div className="mt-2 flex items-center justify-center gap-2 pb-2">
       {Array.from({ length: total }).map((_, index) => (
         <button
           key={index}
@@ -125,8 +121,8 @@ function GlowText({ children, className = "" }) {
   return (
     <div
       className={cn(
-        "whitespace-pre-line text-center font-black uppercase text-[#b9ff57]",
-        "[text-shadow:0_0_3px_rgba(120,255,80,.45),0_0_10px_rgba(80,255,70,.2)]",
+        "whitespace-pre-line text-center font-['Bebas_Neue'] uppercase text-[#b8ff54]",
+        "[text-shadow:0_0_6px_rgba(120,255,80,.55),0_0_18px_rgba(80,255,70,.22)]",
         className
       )}
     >
@@ -135,28 +131,10 @@ function GlowText({ children, className = "" }) {
   );
 }
 
-function RingOnly({ size, opacity = "opacity-80" }) {
+function PortraitHero({ size = "h-[200px] w-[200px] sm:h-[250px] sm:w-[250px]" }) {
   return (
     <div className={cn("relative", size)}>
-      <img
-        src={ringImg}
-        alt=""
-        className={cn("absolute inset-0 h-full w-full object-contain", opacity)}
-      />
-    </div>
-  );
-}
-
-function PortraitHero({ size = "h-[170px] w-[170px] sm:h-[220px] sm:w-[220px]" }) {
-  return (
-    <div className={cn("relative", size)}>
-      <img
-        src={ringImg}
-        alt=""
-        className="absolute inset-0 h-full w-full object-contain brightness-125 saturate-125"
-      />
-      <div className="absolute inset-[22px] overflow-hidden rounded-full bg-black sm:inset-[28px]">
-        <img src={mentorImg} alt="" className="h-full w-full object-cover" />
+<div className="absolute inset-0 overflow-hidden rounded-full bg-black">        <img src={mentorImg} alt="" className="h-full w-full object-cover" />
       </div>
     </div>
   );
@@ -167,15 +145,15 @@ function CoverSlide({ slide }) {
     <div className="flex h-full flex-col items-center justify-center">
       <PortraitHero />
 
-      <div className="mt-3 whitespace-pre-line text-center text-[1.05rem] font-black uppercase leading-[0.98] tracking-tight text-white sm:text-[1.4rem]">
+      <div className="mt-4 whitespace-pre-line text-center font-['Bebas_Neue'] text-[1.45rem] leading-[0.95] tracking-[0.02em] text-white sm:text-[2rem]">
         {slide.eyebrow}
       </div>
 
-      <GlowText className="mt-3 text-[1.95rem] leading-[0.9] tracking-tight sm:text-[2.85rem]">
+      <GlowText className="mt-4 text-[2.9rem] leading-[0.88] tracking-[0.02em] sm:text-[4.25rem]">
         {slide.title}
       </GlowText>
 
-      <div className="mt-3 whitespace-pre-line text-center text-[1rem] font-black uppercase leading-[0.98] tracking-tight text-white sm:text-[1.45rem]">
+      <div className="mt-4 whitespace-pre-line text-center font-['Bebas_Neue'] text-[1.35rem] leading-[0.95] tracking-[0.02em] text-white sm:text-[1.95rem]">
         {slide.subtitle}
       </div>
     </div>
@@ -185,28 +163,24 @@ function CoverSlide({ slide }) {
 function ContentSlide({ slide }) {
   return (
     <div className="flex h-full flex-col items-center justify-center">
-      <div className="text-center text-[0.95rem] font-medium uppercase tracking-wide text-white sm:text-[1.18rem]">
+      <div className="text-center font-['Bebas_Neue'] text-[1.15rem] leading-none tracking-[0.05em] text-white sm:text-[1.5rem]">
         {slide.smallTop}
       </div>
 
-      <div className="mx-auto mt-2 h-px w-full max-w-[320px] bg-white/70" />
+      <div className="mx-auto mt-2 h-px w-full max-w-[320px] bg-white/70 sm:max-w-[430px]" />
 
-      <div className="mt-2 text-center text-[1.35rem] font-black uppercase leading-[0.95] tracking-tight text-white sm:text-[2rem]">
+      <div className="mt-2 text-center font-['Bebas_Neue'] text-[2.1rem] leading-[0.88] tracking-tight text-white sm:text-[3.35rem]">
         {slide.title}
       </div>
 
-      <div className="mt-1 text-center text-[0.8rem] font-black uppercase leading-none tracking-tight text-white sm:text-[1.12rem]">
+      <div className="mt-1 text-center font-['Bebas_Neue'] text-[1.25rem] leading-[0.9] tracking-tight text-white sm:text-[1.95rem]">
         {slide.subtitle}
       </div>
 
-      <div className="relative mt-1 flex w-full flex-1 items-center justify-center">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <RingOnly size={slide.ringSize} />
-        </div>
-
+      <div className="mt-5 flex w-full flex-1 items-center justify-center">
         <GlowText
           className={cn(
-            "relative z-10 px-2 tracking-[-0.02em]",
+            "px-2 tracking-[0.01em]",
             slide.wrap,
             slide.circleClass
           )}
@@ -217,7 +191,7 @@ function ContentSlide({ slide }) {
 
       <div
         className={cn(
-          "mt-2 max-w-[94%] text-center font-semibold italic uppercase tracking-tight text-white",
+          "mt-2 max-w-[94%] text-center font-['Bebas_Neue'] uppercase tracking-tight text-white",
           slide.bottomClass
         )}
       >
@@ -243,8 +217,11 @@ function Bullet({ label, text }) {
       <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lime-500 text-sm font-black text-white sm:h-7 sm:w-7">
         ✓
       </div>
-      <div className="text-[0.9rem] font-bold leading-[1.1] text-white sm:text-[1.12rem]">
-        <span className="text-lime-400">{label}</span> {text}
+      <div className="text-[0.92rem] leading-[1.06] text-white sm:text-[1.08rem]">
+        <span className="font-['Bebas_Neue'] text-[1.05rem] tracking-[0.03em] text-lime-400 sm:text-[1.3rem]">
+          {label}
+        </span>{" "}
+        <span>{text}</span>
       </div>
     </div>
   );
@@ -253,50 +230,46 @@ function Bullet({ label, text }) {
 function CtaSlide({ slide }) {
   return (
     <div className="flex h-full flex-col items-center justify-center">
-      <div className="text-center text-[0.95rem] font-medium uppercase tracking-wide text-white sm:text-[1.18rem]">
+      <div className="text-center font-['Bebas_Neue'] text-[1.05rem] leading-none tracking-[0.05em] text-white sm:text-[1.4rem]">
         {slide.smallTop}
       </div>
 
-      <div className="mx-auto mt-2 h-px w-full max-w-[320px] bg-white/70" />
+      <div className="mx-auto mt-2 h-px w-full max-w-[320px] bg-white/70 sm:max-w-[430px]" />
 
       <div className="relative mt-3">
-        <div className="relative h-[150px] w-[150px] sm:h-[190px] sm:w-[190px]">
-          <img
-            src={ringImg}
-            alt=""
-            className="absolute inset-0 h-full w-full object-contain brightness-125 saturate-125"
-          />
-          <div className="absolute inset-[20px] overflow-hidden rounded-full bg-black sm:inset-[25px]">
-            <img src={mentorImg} alt="" className="h-full w-full object-cover" />
+        <div className="relative h-[135px] w-[135px] sm:h-[175px] sm:w-[175px]">
+        <div className="absolute inset-0 overflow-hidden rounded-full bg-black">            <img src={mentorImg} alt="" className="h-full w-full object-cover" />
           </div>
         </div>
         <BadgeImage />
       </div>
 
-      <GlowText className="mt-4 text-[1.45rem] leading-[0.94] sm:text-[2.2rem]">
+      <GlowText className="mt-3 text-[1.65rem] leading-[0.9] tracking-[0.02em] sm:text-[2.55rem]">
         {slide.title}
       </GlowText>
 
-      <div className="mt-3 whitespace-pre-line text-center text-[0.88rem] font-semibold leading-[1.12] text-white sm:text-[1.08rem]">
+      <div className="mt-2 whitespace-pre-line text-center text-[0.88rem] leading-[1.08] text-white sm:text-[1rem]">
         {slide.paragraph}
       </div>
 
-      <div className="mt-4 flex w-full max-w-[360px] flex-col gap-3">
+      <div className="mt-3 flex w-full max-w-[360px] flex-col gap-2.5">
         {slide.bullets.map(([label, text]) => (
           <Bullet key={label} label={label} text={text} />
         ))}
       </div>
 
       <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-5 flex w-full max-w-[360px] items-center justify-center rounded-2xl bg-lime-400 px-5 py-3 text-center text-[0.98rem] font-black uppercase tracking-tight text-black shadow-[0_0_22px_rgba(57,255,20,0.35)] transition hover:brightness-105 sm:text-[1.25rem]"
-      >
-        {slide.cta}
-      </a>
+  href={WHATSAPP_LINK}
+  target="_blank"
+  rel="noreferrer"
+  className="mt-5 flex w-full max-w-[360px] flex-col items-center justify-center rounded-[28px] bg-[#a7ef2d] px-6 py-5 text-center text-black shadow-[0_0_24px_rgba(167,239,45,0.35)] transition hover:brightness-105"
+>
+  <span className="font-['Bebas_Neue'] text-[2.2rem] leading-[0.9] tracking-tight sm:text-[3rem]">
+  ¡SÍ! QUIERO ENTRAR AL RETO GRATIS"   </span>
 
-      <div className="mt-2 text-center text-[0.76rem] font-medium text-white/90 sm:text-[0.9rem]">
+</a>
+
+      <div className="mt-1 text-center text-[0.76rem] italic text-white/75 sm:text-[0.88rem]">
         {slide.footnote}
       </div>
     </div>
@@ -305,10 +278,7 @@ function CtaSlide({ slide }) {
 
 function Slide({ slide }) {
   return (
-    <div className="relative mx-auto h-[100dvh] max-h-[100dvh] w-full max-w-[600px] overflow-hidden bg-black px-5 pb-4 pt-4 sm:px-8 sm:pb-5 sm:pt-5">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(57,255,20,0.08),transparent_34%),radial-gradient(circle_at_bottom,rgba(57,255,20,0.04),transparent_28%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03] [background-image:linear-gradient(rgba(80,255,90,.45)_1px,transparent_1px),linear-gradient(90deg,rgba(80,255,90,.45)_1px,transparent_1px)] [background-size:34px_34px]" />
-
+    <div className="relative mx-auto h-[100dvh] max-h-[100dvh] w-full max-w-[600px] overflow-hidden bg-black px-5 pb-3 pt-3 sm:px-8 sm:pb-4 sm:pt-4">
       {slide.type === "cover" && <CoverSlide slide={slide} />}
       {slide.type === "content" && <ContentSlide slide={slide} />}
       {slide.type === "cta" && <CtaSlide slide={slide} />}
@@ -362,7 +332,7 @@ export default function App() {
     <main className="h-[100dvh] overflow-hidden bg-black text-white">
       <div className="mx-auto h-[100dvh] max-w-[720px]">
         <div
-          className="relative h-[calc(100dvh-44px)]"
+          className="relative h-[calc(100dvh-38px)]"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
