@@ -8,7 +8,13 @@ const slides = [
   {
     id: 1,
     type: "cover",
-    eyebrow: "¿AÑOS DE INGLÉS Y\nSIGUES SIN EMPLEO?",
+    eyebrow: (
+      <>
+        ¿AÑOS DE INGLÉS Y
+        <br />
+        <span className="text-red-500">SIGUES SIN EMPLEO?</span>
+      </>
+    ),
     title: "LOS 3 CÓDIGOS\nCONFIDENCIALES",
     subtitle: "GUÍA DE MENTORÍA\n(POR PAL CALL CENTER)",
   },
@@ -23,9 +29,9 @@ const slides = [
     bottom:
       "*LA ENTREVISTA SE GANA POR CÓMO LO DICES, NO SOLO POR QUÉ DICES.*",
     circleClass:
-      "text-[1.28rem] leading-[0.95] sm:text-[1.7rem] md:text-[2rem]",
-    bottomClass: "text-[0.82rem] leading-[1.02] sm:text-[1rem]",
-    wrap: "max-w-[340px] sm:max-w-[440px]",
+      "text-[1.65rem] leading-[0.9] sm:text-[2.2rem] md:text-[2.6rem]",
+    bottomClass: "text-[0.86rem] leading-[1] sm:text-[1rem]",
+    wrap: "max-w-[420px] sm:max-w-[520px]",
   },
   {
     id: 3,
@@ -38,9 +44,9 @@ const slides = [
     bottom:
       "UN FINAL FELIZ CON RESULTADOS ESPECÍFICOS VALE MÁS QUE MIL PALABRAS.",
     circleClass:
-      "text-[1.08rem] leading-[0.98] sm:text-[1.42rem] md:text-[1.7rem]",
-    bottomClass: "text-[0.78rem] leading-[1.02] sm:text-[0.96rem]",
-    wrap: "max-w-[345px] sm:max-w-[440px]",
+      "text-[1.4rem] leading-[0.92] sm:text-[1.85rem] md:text-[2.2rem]",
+    bottomClass: "text-[0.82rem] leading-[1] sm:text-[0.96rem]",
+    wrap: "max-w-[420px] sm:max-w-[520px]",
   },
   {
     id: 4,
@@ -52,9 +58,9 @@ const slides = [
       "¿SIN EXPERIENCIA?\n➜ Actitud, Logros\nPersonales y Carrera\nen la empresa.\n\n¿CON EXPERIENCIA?\n➜ Números y Soluciones\nCríticas en trabajo anterior.",
     bottom: "Sé la solución que cierra su meta hoy.",
     circleClass:
-      "text-[1.12rem] leading-[0.98] sm:text-[1.5rem] md:text-[1.8rem]",
-    bottomClass: "text-[0.9rem] leading-[1.02] sm:text-[1.08rem]",
-    wrap: "max-w-[345px] sm:max-w-[440px]",
+      "text-[1.5rem] leading-[0.92] sm:text-[2rem] md:text-[2.3rem]",
+    bottomClass: "text-[0.92rem] leading-[1] sm:text-[1.08rem]",
+    wrap: "max-w-[420px] sm:max-w-[520px]",
   },
   {
     id: 5,
@@ -134,7 +140,8 @@ function GlowText({ children, className = "" }) {
 function PortraitHero({ size = "h-[200px] w-[200px] sm:h-[250px] sm:w-[250px]" }) {
   return (
     <div className={cn("relative", size)}>
-<div className="absolute inset-0 overflow-hidden rounded-full bg-black">        <img src={mentorImg} alt="" className="h-full w-full object-cover" />
+      <div className="absolute inset-0 overflow-hidden rounded-full bg-black">
+        <img src={mentorImg} alt="" className="h-full w-full object-cover" />
       </div>
     </div>
   );
@@ -162,22 +169,22 @@ function CoverSlide({ slide }) {
 
 function ContentSlide({ slide }) {
   return (
-    <div className="flex h-full flex-col items-center justify-center">
+    <div className="flex h-full flex-col items-center pt-4 pb-3">
       <div className="text-center font-['Bebas_Neue'] text-[1.15rem] leading-none tracking-[0.05em] text-white sm:text-[1.5rem]">
         {slide.smallTop}
       </div>
 
-      <div className="mx-auto mt-2 h-px w-full max-w-[320px] bg-white/70 sm:max-w-[430px]" />
+      <div className="mt-2 h-px w-[82%] max-w-[430px] bg-white/70" />
 
-      <div className="mt-2 text-center font-['Bebas_Neue'] text-[2.1rem] leading-[0.88] tracking-tight text-white sm:text-[3.35rem]">
+      <div className="mt-3 text-center font-['Bebas_Neue'] text-[2.1rem] leading-[0.88] tracking-tight text-white sm:text-[3.2rem]">
         {slide.title}
       </div>
 
-      <div className="mt-1 text-center font-['Bebas_Neue'] text-[1.25rem] leading-[0.9] tracking-tight text-white sm:text-[1.95rem]">
+      <div className="mt-2 text-center font-['Bebas_Neue'] text-[1.2rem] leading-[0.9] tracking-tight text-white sm:text-[1.85rem]">
         {slide.subtitle}
       </div>
 
-      <div className="mt-5 flex w-full flex-1 items-center justify-center">
+      <div className="mt-6 flex items-center justify-center">
         <GlowText
           className={cn(
             "px-2 tracking-[0.01em]",
@@ -191,7 +198,7 @@ function ContentSlide({ slide }) {
 
       <div
         className={cn(
-          "mt-2 max-w-[94%] text-center font-['Bebas_Neue'] uppercase tracking-tight text-white",
+          "mt-7 max-w-[94%] text-center font-['Bebas_Neue'] uppercase tracking-tight text-white",
           slide.bottomClass
         )}
       >
@@ -238,7 +245,8 @@ function CtaSlide({ slide }) {
 
       <div className="relative mt-3">
         <div className="relative h-[135px] w-[135px] sm:h-[175px] sm:w-[175px]">
-        <div className="absolute inset-0 overflow-hidden rounded-full bg-black">            <img src={mentorImg} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 overflow-hidden rounded-full bg-black">
+            <img src={mentorImg} alt="" className="h-full w-full object-cover" />
           </div>
         </div>
         <BadgeImage />
@@ -259,15 +267,15 @@ function CtaSlide({ slide }) {
       </div>
 
       <a
-  href={WHATSAPP_LINK}
-  target="_blank"
-  rel="noreferrer"
-  className="mt-5 flex w-full max-w-[360px] flex-col items-center justify-center rounded-[28px] bg-[#a7ef2d] px-6 py-5 text-center text-black shadow-[0_0_24px_rgba(167,239,45,0.35)] transition hover:brightness-105"
->
-  <span className="font-['Bebas_Neue'] text-[2.2rem] leading-[0.9] tracking-tight sm:text-[3rem]">
-  ¡SÍ! QUIERO ENTRAR AL RETO GRATIS"   </span>
-
-</a>
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-5 flex w-full max-w-[360px] flex-col items-center justify-center rounded-[28px] bg-[#a7ef2d] px-6 py-5 text-center text-black shadow-[0_0_24px_rgba(167,239,45,0.35)] transition hover:brightness-105"
+      >
+        <span className="font-['Bebas_Neue'] text-[2.2rem] leading-[0.9] tracking-tight sm:text-[3rem]">
+          {slide.cta}
+        </span>
+      </a>
 
       <div className="mt-1 text-center text-[0.76rem] italic text-white/75 sm:text-[0.88rem]">
         {slide.footnote}
